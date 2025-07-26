@@ -1,0 +1,132 @@
+import React, { useState } from "react";
+
+export const Temaplat = () => {
+  const [activeItem, setActiveItem] = useState("Cadastro");
+
+  const navItems = [
+    {
+      label: "Cadastro",
+      submenu: ["Cadastrar usuário", "Listar usuários", "Editar usuário"],
+    },
+    {
+      label: "Incubatório",
+      submenu: ["Status dos ovos", "Controle de temperatura", "Relatórios"],
+    },
+    {
+      label: "Integração",
+      submenu: ["Configurar APIs", "Sincronizar dados", "Logs"],
+    },
+    {
+      label: "Ração",
+      submenu: ["Estoque", "Pedidos", "Fornecedores"],
+    },
+  ];
+
+  return (
+    <div>
+      <nav
+        className="navbar navbar-expand-lg bg-body-tertiary"
+        style={{ margin: 0, padding: 0 }}
+      >
+        <div className="container-fluid" style={{ background: "#2E9AB2" }}>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              {navItems.map(({ label, submenu }) => (
+                <li
+                  key={label}
+                  className={`nav-item dropdown ${
+                    activeItem === label ? "active" : ""
+                  }`}
+                  style={{ marginRight: "0.5rem" }}
+                >
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id={`${label}-dropdown`}
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    onClick={() => setActiveItem(label)}
+                    style={{
+                      background: activeItem === label ? "#145c6e" : "transparent",
+                      color: "#FFFFFF",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    {label}
+                  </a>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby={`${label}-dropdown`}
+                    
+                  >
+                    {submenu.map((subItem) => (
+                      <li key={subItem}>
+                        <a className="dropdown-item" href="#">
+                          {subItem}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <section
+            style={{ display: "flex", alignItems: "center", position: "relative" }}
+          >
+            <img style={{ width: "2rem", height: "2rem" }} src="./boy.png" alt="" />
+            <div className="dropdown" style={{ position: "relative" }}>
+              <button
+                className="btn"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style={{ border: "none" }}
+              >
+                <img
+                  style={{ width: "1.5rem", height: "1.5rem", marginTop: ".1rem" }}
+                  src="./down.png"
+                  alt=""
+                />
+              </button>
+              <ul
+                className="dropdown-menu"
+                style={{
+                  left: "auto",
+                  right: "0",
+                  top: "100%",
+                  marginTop: ".5rem",
+                }}
+              >
+                <li>
+                  <span className="dropdown-item-text" style={{ background: "#eef6faff" }}>
+                    Usuario: luiz
+                  </span>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Sair
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </nav>
+    </div>
+  );
+};
