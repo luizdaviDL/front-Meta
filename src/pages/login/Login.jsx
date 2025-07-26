@@ -5,7 +5,7 @@ export const Login = () => {
     <div style={{display:"flex", justifyContent:"center", marginTop:"12rem"}}>
         <section style={{width:"25rem", background:"#ffffffff"}}>
             <section style={{display:"flex", justifyContent:"center", marginBottom:"2rem"}}>
-                <h1>Meta</h1>
+                <h1>Flex-Data</h1>
             </section>
             <form>
                 <div class="mb-3">

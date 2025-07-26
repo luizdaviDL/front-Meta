@@ -1,20 +1,50 @@
 import React, { useState } from "react";
+import { User } from "./user/User";
+import { Outlet, useLocation, useNavigate} from 'react-router-dom';
 
 export const Temaplat = () => {
+  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("Cadastro");
+  const [selectedSubItem, setSelectedSubItem] = useState(null);
+
+  const routeMap = {
+    "Usuários": "/cadastro",
+    "Produtos": "/produtos",
+    "Clientes": "/clientes",
+    "Relatórios": "/relatorios",
+    // ...adicione o que quiser
+  };
+
 
   const navItems = [
     {
       label: "Cadastro",
-      submenu: ["Cadastrar usuário", "Listar usuários", "Editar usuário"],
+      submenu: [
+        "Usuários",
+        "Tipo de Lote",
+        "Espécie",
+        "Raça / Linhagem",
+        "Tipo de Ração",
+        "Tipo de Vacina",
+        "Tipo de Evento",        
+        "Responsável Técnico",
+        "Integrado / Produtor",
+        "Setor",
+        "Tipo de Produto",
+        "Classificação de Carcaça",
+        "Unidade de Medida",
+        "Motivo de Baixa",
+        "Fornecedor"
+      ]
+
     },
     {
       label: "Incubatório",
-      submenu: ["Status dos ovos", "Controle de temperatura", "Relatórios"],
+      submenu: ["Lote", "Custos", "Relatórios"],
     },
     {
       label: "Integração",
-      submenu: ["Configurar APIs", "Sincronizar dados", "Logs"],
+      submenu: ["Lote", "Custos", "Relatórios"],
     },
     {
       label: "Ração",
@@ -70,15 +100,28 @@ export const Temaplat = () => {
                   <ul
                     className="dropdown-menu"
                     aria-labelledby={`${label}-dropdown`}
-                    
+                    style={{columnCount:"3"}}
                   >
-                    {submenu.map((subItem) => (
-                      <li key={subItem}>
-                        <a className="dropdown-item" href="#">
-                          {subItem}
-                        </a>
-                      </li>
-                    ))}
+                  {submenu.map((subItem) => (
+                    <li key={subItem}>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={() => {
+                          setSelectedSubItem(subItem);
+                          
+                          const path = routeMap[subItem];
+                          if (path) {
+                            navigate(path); // navega para o caminho definido
+                          }
+                        }}
+                      >
+                        {subItem}
+                      </a>
+                    </li>
+                  ))}
+
+
                   </ul>
                 </li>
               ))}
@@ -127,6 +170,9 @@ export const Temaplat = () => {
           </section>
         </div>
       </nav>
+      <div >
+          <Outlet/>
+      </div>
     </div>
   );
 };
