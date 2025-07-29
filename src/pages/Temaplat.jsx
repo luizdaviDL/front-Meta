@@ -170,7 +170,7 @@ export const Temaplat = () => {
           </section>
         </div>
       </nav>
-      <div >
+      <div style={{ overflowX: "hidden" }}>
           <Outlet/>
       </div>
     </div>
