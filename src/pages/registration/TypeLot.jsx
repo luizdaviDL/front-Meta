@@ -24,7 +24,7 @@ export const TypeLot = () => {
           }}
         >
           <h3 style={{ borderBottom: "1px solid #ddd", paddingBottom: "1rem", marginBottom: "2rem", color: "#333" }}>
-            Cadastro de Tipo de Lote
+            Tipo de Lote
           </h3>
 
           <form>

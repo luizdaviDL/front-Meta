@@ -31,7 +31,7 @@ export const Lineage= () => {
               color: "#333",
             }}
           >
-            Cadastro de Raça / Linhagem
+            Raça / Linhagem
           </h3>
 
           <form>
