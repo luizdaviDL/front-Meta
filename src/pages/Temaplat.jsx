@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { User } from "./user/User";
+import { User } from "./registration/User";
 import { Outlet, useLocation, useNavigate} from 'react-router-dom';
 
 export const Temaplat = () => {
@@ -8,11 +8,10 @@ export const Temaplat = () => {
   const [selectedSubItem, setSelectedSubItem] = useState(null);
 
   const routeMap = {
-    "Usuários": "/cadastro",
-    "Produtos": "/produtos",
-    "Clientes": "/clientes",
-    "Relatórios": "/relatorios",
-    // ...adicione o que quiser
+    "Usuários": "/cadastroUsuario",
+    "Fornecedor": "/cadastroFornecedor",
+    "Tipo de Lote": "/cadastroLotea",
+    "Raça / Linhagem": "/cadastroLinhagem"
   };
 
 
@@ -21,8 +20,8 @@ export const Temaplat = () => {
       label: "Cadastro",
       submenu: [
         "Usuários",
-        "Tipo de Lote",
-        "Espécie",
+        "Fornecedor",
+        "Tipo de Lote",        
         "Raça / Linhagem",
         "Tipo de Ração",
         "Tipo de Vacina",
