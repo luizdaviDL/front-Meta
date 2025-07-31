@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { SaveButton } from '../components/buttons/SaveButton';
 
 export const TypeLot = () => {
+
+  const refs = {
+    name: useRef(null),
+    description: useRef(null),
+    purpose: useRef(null),
+    ativo: useRef(null),
+    category: useRef(null),
+    band: useRef(null),
+  };
   return (
     <div
       style={{
@@ -50,18 +60,18 @@ export const TypeLot = () => {
                 <h5 style={{ color: "#555" }}>Informações Básicas</h5>
 
                 <div>
-                  <label htmlFor="nome" className="form-label">Nome do tipo de lote</label>
-                  <input type="text" className="form-control" id="nome" placeholder="Ex: Matrizes" />
+                  <label htmlFor="name" className="form-label">Nome do tipo de lote</label>
+                  <input type="text" className="form-control" ref={refs.name} placeholder="Ex: Matrizes" required/>
                 </div>
 
                 <div>
-                  <label htmlFor="descricao" className="form-label">Descrição</label>
-                  <textarea type="text" className="form-control" id="descricao" placeholder="Ex: Lotes de frangos prontos para abate" />
+                  <label htmlFor="description" className="form-label">Descrição</label>
+                  <textarea type="text" className="form-control" ref={refs.description} placeholder="Ex: Lotes de frangos prontos para abate" />
                 </div>
 
                 <div>
-                  <label htmlFor="finalidade" className="form-label">Finalidade</label>
-                  <input type="text" className="form-control" id="finalidade" placeholder="Ex: Reprodução, Engorda" />
+                  <label htmlFor="purpose" className="form-label">Finalidade</label>
+                  <input type="text" className="form-control" ref={refs.purpose} placeholder="Ex: Reprodução, Engorda" required/>
                 </div>
               </section>
 
@@ -79,7 +89,7 @@ export const TypeLot = () => {
 
                 <div>
                   <label htmlFor="ativo" className="form-label">Ativo?</label>
-                  <select className="form-control" id="ativo" defaultValue="">
+                  <select className="form-control" ref={refs.ativo} defaultValue="">
                     <option disabled value="">Selecionar</option>
                     <option>Sim</option>
                     <option>Não</option>
@@ -87,22 +97,20 @@ export const TypeLot = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="categoria" className="form-label">Categoria (opcional)</label>
-                  <input type="text" className="form-control" id="categoria" placeholder="Ex: Aves, Suínos" />
+                  <label htmlFor="category" className="form-label">Categoria (opcional)</label>
+                  <input type="text" className="form-control" ref={refs.category} placeholder="Ex: Aves, Suínos" required/>
                 </div>
 
                 <div>
-                  <label htmlFor="faixa" className="form-label">Faixa etária esperada</label>
-                  <input type="text" className="form-control" id="faixa" placeholder="Ex: 1 a 45 dias" />
+                  <label htmlFor="band" className="form-label">Faixa-etária esperada</label>
+                  <input type="text" className="form-control" ref={refs.band} placeholder="Ex: 1 a 45 dias" required/>
                 </div>
               </section>
             </div>
 
             <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2rem" }}>
               <section style={{ width: "10rem" }}>
-                <button type="submit" className="btn btn-primary px-4 py-2">
-                  Salvar
-                </button>
+                <SaveButton/>
               </section>
             </div>
           </form>

@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const SuccessAlert = () => {
+export const SuccessAlert = ({text}) => {
   return (
     <div>
         <div className="alert alert-success" role="alert" style={{marginRight:"12rem"}}>
-            A simple success alert—check it out!
+            {text}
         </div>
     </div>
   )

@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from 'react';
+import { SaveButton } from "../components/buttons/SaveButton";
+import { SuccessAlert } from "../components/alerts/SuccessAlert";
+import { DangerAlert } from "../components/alerts/DangerAlert";
 
 export const Lineage= () => {
+  const [showError, setShowError] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const [mensageError, setMensageError] = useState(false);
+  const [mensageSuccess, setMensageSuccess] = useState(false);
+  
+
+  const refs = {
+    name: useRef(null),
+    productivePurpose: useRef(null),
+    mediumCycle: useRef(null),
+    observation: useRef(null),
+    averageYield: useRef(null),
+    origin: useRef(null),
+    status: useRef(null),
+  };
+
+
   return (
     <div
       style={{
@@ -55,39 +76,39 @@ export const Lineage= () => {
                 }}
               >
                 <div>
-                  <label htmlFor="nomeRaca" className="form-label">
+                  <label htmlFor="name" className="form-label">
                     Nome da Raça / Linhagem
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="nomeRaca"
+                    ref={refs.name}                    
                     placeholder="Ex: Cobb 500, Ross 308, Angus"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="finalidadeProdutiva" className="form-label">
+                  <label htmlFor="productivePurpose" className="form-label">
                     Finalidade Produtiva
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="finalidadeProdutiva"
+                    ref={refs.productivePurpose}
                     placeholder="Ex: Corte, Postura, Leite"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="cicloMedio" className="form-label">
+                  <label htmlFor="mediumCycle" className="form-label">
                     Ciclo Médio (dias)
                   </label>
                   <input
                     type="number"
                     className="form-control"
-                    id="cicloMedio"
+                    ref={refs.mediumCycle}
                     placeholder="Ex: 42, 365"
                     min={1}
                     required
@@ -95,12 +116,12 @@ export const Lineage= () => {
                 </div>
 
                  <div>
-                  <label htmlFor="observacoes" className="form-label">
+                  <label htmlFor="observation" className="form-label">
                     Observações
                   </label>
                   <textarea
                     className="form-control"
-                    id="observacoes"
+                    id="observation"
                     rows={6}
                     placeholder="Campo livre para notas, histórico etc."
                   />
@@ -119,35 +140,35 @@ export const Lineage= () => {
                 }}
               >
                 <div>
-                  <label htmlFor="rendimentoMedio" className="form-label">
+                  <label htmlFor="averageYield" className="form-label">
                     Rendimento médio (opcional)
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="rendimentoMedio"
+                    ref={refs.averageYield}
                     placeholder="Ex: 2,4 kg ao abate, 280 ovos/ano"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="origem" className="form-label">
-                    Origem
+                  <label htmlFor="origin" className="form-label">
+                    origin
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="origem"
+                    ref={refs.origin}
                     placeholder="Ex: Comercial nacional, Importada"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="statusAtiva" className="form-label">
+                  <label htmlFor="status" className="form-label">
                     Status / Ativa?
                   </label>
-                  <select className="form-control" id="statusAtiva" defaultValue="" required>
+                  <select className="form-control" ref={refs.status} defaultValue="" required>
                     <option disabled value="">
                       Selecionar
                     </option>
@@ -162,11 +183,12 @@ export const Lineage= () => {
             </div>
 
             <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2rem" }}>
+              {showSuccess && <SuccessAlert text={mensageError}/>} 
+              {showError && <DangerAlert text={mensageSuccess}/>} 
               <section style={{ width: "10rem" }}>
-                <button type="submit" className="btn btn-primary px-4 py-2">
-                  Salvar
-                </button>
+                <SaveButton/>
               </section>
+              
             </div>
           </form>
         </section>

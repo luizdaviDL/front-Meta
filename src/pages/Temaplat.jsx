@@ -32,8 +32,7 @@ export const Temaplat = () => {
         "Tipo de Produto",
         "Classificação de Carcaça",
         "Unidade de Medida",
-        "Motivo de Baixa",
-        "Fornecedor"
+        "Motivo de Baixa",        
       ]
 
     },
