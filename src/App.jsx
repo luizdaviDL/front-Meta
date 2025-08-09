@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Login } from './pages/login/Login'
+import { Login } from './pages/AccessControl/Login'
 import { Temaplat } from './pages/Temaplat'
 function App() {
   const [count, setCount] = useState(0)

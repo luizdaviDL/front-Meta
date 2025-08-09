@@ -1,21 +1,16 @@
 import React, { useRef, useState } from 'react';
 import { SaveButton } from '../components/buttons/SaveButton';
 
-export const TypeLot = () => {
+export const TypeFeed = () => {
 
   const refs = {
-    code: useRef(null),
     name: useRef(null),
+    description: useRef(null),
     purpose: useRef(null),
-    species: useRef(null),
-    age: useRef(null),
-    physicalForm: useRef(null),
-    composition: useRef(null),
-    supplier: useRef(null),
-    active: useRef(null),
-    notes: useRef(null),
+    ativo: useRef(null),
+    category: useRef(null),
+    band: useRef(null),
   };
-
   return (
     <div
       style={{
@@ -39,7 +34,7 @@ export const TypeLot = () => {
           }}
         >
           <h3 style={{ borderBottom: "1px solid #ddd", paddingBottom: "1rem", marginBottom: "2rem", color: "#333" }}>
-            Tipo de Lote
+            Tipo de Ração
           </h3>
 
           <form>
@@ -65,28 +60,18 @@ export const TypeLot = () => {
                 <h5 style={{ color: "#555" }}>Informações Básicas</h5>
 
                 <div>
-                  <label className="form-label">Código / Sigla</label>
-                  <input type="text" className="form-control" ref={refs.code} placeholder="Ex: RA001" required/>
+                  <label htmlFor="name" className="form-label">Nome do tipo de lote</label>
+                  <input type="text" className="form-control" ref={refs.name} placeholder="Ex: Matrizes" required/>
                 </div>
 
                 <div>
-                  <label className="form-label">Nome do Tipo</label>
-                  <input type="text" className="form-control" ref={refs.name} placeholder="Ex: Ração Crescimento" required/>
+                  <label htmlFor="description" className="form-label">Descrição</label>
+                  <textarea type="text" className="form-control" ref={refs.description} placeholder="Ex: Lotes de frangos prontos para abate" />
                 </div>
 
                 <div>
-                  <label className="form-label">Finalidade / Etapa</label>
+                  <label htmlFor="purpose" className="form-label">Finalidade</label>
                   <input type="text" className="form-control" ref={refs.purpose} placeholder="Ex: Reprodução, Engorda" required/>
-                </div>
-
-                <div>
-                  <label className="form-label">Espécie associada</label>
-                  <input type="text" className="form-control" ref={refs.species} placeholder="Ex: Aves, Suínos" required/>
-                </div>
-
-                <div>
-                  <label className="form-label">Idade de uso (dias)</label>
-                  <input type="text" className="form-control" ref={refs.age} placeholder="Ex: 1 a 45" required/>
                 </div>
               </section>
 
@@ -103,23 +88,8 @@ export const TypeLot = () => {
                 <h5 style={{ color: "#555" }}>Configurações</h5>
 
                 <div>
-                  <label className="form-label">Forma física</label>
-                  <input type="text" className="form-control" ref={refs.physicalForm} placeholder="Ex: Farelo, Peletizada" required/>
-                </div>
-
-                <div>
-                  <label className="form-label">Composição resumida</label>
-                  <textarea className="form-control" ref={refs.composition} placeholder="Ex: Milho, soja, minerais" />
-                </div>
-
-                <div>
-                  <label className="form-label">Fornecedor padrão</label>
-                  <input type="text" className="form-control" ref={refs.supplier} placeholder="Ex: AgroNutri" />
-                </div>
-
-                <div>
-                  <label className="form-label">Status / Ativa?</label>
-                  <select className="form-control" ref={refs.active} defaultValue="">
+                  <label htmlFor="ativo" className="form-label">Ativo?</label>
+                  <select className="form-control" ref={refs.ativo} defaultValue="">
                     <option disabled value="">Selecionar</option>
                     <option>Sim</option>
                     <option>Não</option>
@@ -127,8 +97,13 @@ export const TypeLot = () => {
                 </div>
 
                 <div>
-                  <label className="form-label">Observações</label>
-                  <textarea className="form-control" ref={refs.notes} placeholder="Informações adicionais" />
+                  <label htmlFor="category" className="form-label">Categoria (opcional)</label>
+                  <input type="text" className="form-control" ref={refs.category} placeholder="Ex: Aves, Suínos" required/>
+                </div>
+
+                <div>
+                  <label htmlFor="band" className="form-label">Faixa-etária esperada</label>
+                  <input type="text" className="form-control" ref={refs.band} placeholder="Ex: 1 a 45 dias" required/>
                 </div>
               </section>
             </div>

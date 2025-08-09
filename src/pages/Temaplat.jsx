@@ -11,7 +11,11 @@ export const Temaplat = () => {
     "Usuários": "/cadastroUsuario",
     "Fornecedor": "/cadastroFornecedor",
     "Tipo de Lote": "/cadastroLotea",
-    "Raça / Linhagem": "/cadastroLinhagem"
+    "Raça / Linhagem": "/cadastroLinhagem",
+    "Tipo de Ração": "/feed",
+    "Tipo de Vacina": "/vaccine",
+    "Tipo de Evento": "/event",
+    "Integrado / Produtor": "/integration",
   };
 
 
@@ -25,8 +29,7 @@ export const Temaplat = () => {
         "Raça / Linhagem",
         "Tipo de Ração",
         "Tipo de Vacina",
-        "Tipo de Evento",        
-        "Responsável Técnico",
+        "Tipo de Evento",               
         "Integrado / Produtor",
         "Setor",
         "Tipo de Produto",
